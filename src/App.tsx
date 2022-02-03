@@ -6,6 +6,8 @@ type Weather = {
   notes: string;
 };
 
+
+
 const App = () => {
   const [weather, setWeather] = useState<Weather>({ temperature: 0, updatedAt: '', notes: '' });
 
@@ -32,14 +34,35 @@ const App = () => {
     };
   }, []);
 
-  return (
-    <div>
-      <h1>Weather status</h1>
-      <hr/>
-      <h3>Total temperature: {weather.temperature}</h3>
-      <h3>Total updatedAt: {weather.updatedAt}</h3>
-      <h3>Total notes: {weather.notes}</h3>
+  const boxStyle = { 
+    fontFamily: 'Montserrat',
+    background: '#d22222',
+    display: 'flex',
+    alignItems: 'center', 
+    flexDirection: 'column'
+  };
 
+  const cardStyle = {
+    backgroundColor: '#fcfdfd',
+    borderRadius: '10px',
+    margin: '5%',
+    padding: '25px',
+    boxShadow: '0px 31px 35px -26px #080c21'
+  }
+
+  const colorStyle = {
+    color: 'rgba(0,0,0,0.5)'
+  }
+
+  return (
+    <div style={boxStyle as React.CSSProperties}>
+      <div style={cardStyle as React.CSSProperties}>
+        <h1>Weather status</h1>
+        <hr/>
+        <h3><span style={colorStyle}>Total temperature: </span>{weather.temperature}</h3>
+        <h3><span style={colorStyle}>Total updatedAt: </span>{weather.updatedAt}</h3>
+        <h3><span style={colorStyle}>Total notes: </span>{weather.notes}</h3>
+      </div>
     </div>
   );
 }
